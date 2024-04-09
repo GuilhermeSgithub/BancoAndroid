@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -17,15 +18,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        listaClientes.add(Cliente("guilherme", "1748", 120.00))
+        listaClientes.add(Cliente("matheus", "1020", 200.00))
+
+
         binding.button.setOnClickListener {
             val sucessoLogin =
                 login(binding.nomeInserido, binding.senhaInserida, listaClientes)
 
             if (sucessoLogin) {
-                showToast(this,"ok", 1)
-
+                val intent = Intent(this, MenuActivity::class.java)
+                startActivity(intent)
             }else{
-                showToast(this,"no", 1)
+                showToast(this,"Usuario Não Cadastrado, Tente Novamente", 1)
             }
         }
     }
