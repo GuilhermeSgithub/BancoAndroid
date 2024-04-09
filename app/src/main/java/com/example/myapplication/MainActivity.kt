@@ -17,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         listaClientes.add(Cliente("guilherme", "1748", 120.00))
         listaClientes.add(Cliente("matheus", "1020", 200.00))
-
 
         binding.button.setOnClickListener {
             val sucessoLogin =
@@ -29,8 +27,8 @@ class MainActivity : AppCompatActivity() {
             if (sucessoLogin) {
                 val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
-            }else{
-                showToast(this,"Usuario Não Cadastrado, Tente Novamente", 1)
+            } else {
+                showToast(this, "Usuário Não Cadastrado, Tente Novamente", 1)
             }
         }
     }
