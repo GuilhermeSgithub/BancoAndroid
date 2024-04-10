@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.myapplication.Data.Cliente
+import com.example.myapplication.data.Cliente
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     showToast(
                         this@MainActivity,
-                        "Usuário Não Cadastrado, Tente Novamente",
-                        1
+                        "Usuário Não Cadastrado, Tente Novamente"
                     )
                 }
             }
@@ -45,8 +44,8 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(context, message, duration).show()
+fun showToast(context: Context, message: String) {
+    Toast.makeText(context, message,Toast.LENGTH_SHORT).show()
 }
 
 fun login(
@@ -54,7 +53,6 @@ fun login(
     senha: String,
     listaClientes: List<Cliente>
 ): Boolean {
-
     val verificarUser = listaClientes.find { it.nome == username }
 
     return verificarUser != null && verificarUser.senha == senha
